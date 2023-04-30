@@ -10,3 +10,5 @@ npx hardhat node
 npx hardhat run scripts/deploy.js
 ```
 # Chai-DApp
+
+Contract Deployed to 0x8E72BBc23465C700c9a8c837fE5e24fA46dEF5BA
