@@ -2,6 +2,7 @@ import abi from "./contract/Chai.json";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import { Box } from "@chakra-ui/react";
+import Buy from "./components/Buy";
 
 function App() {
   const [state, setState] = useState({
@@ -35,7 +36,9 @@ function App() {
 
   console.log(state);
   return <div className="App">
-    <Box>Hello, World!</Box>
+    <Box>
+      <Buy state={state} />
+    </Box>
   </div>;
 }
 
