@@ -13,33 +13,39 @@ function App() {
 
   useEffect(() => {
     const connectWallet = async () => {
-      const contractAddress = "0xb27b54e097a9982b778b4709517eb5d83374e4b3";
+      const contractAddress = "0x8e72bbc23465c700c9a8c837fe5e24fa46def5ba";
       const contractABI = abi.abi;
-      
+
       try {
         const { ethereum } = window;
 
-        if(ethereum) {
-          const accounts = await ethereum.request({ method: "eth_requestAccounts" })
+        if (ethereum) {
+          const accounts = await ethereum.request({
+            method: "eth_requestAccounts",
+          });
         }
 
         const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
-        const contract = new ethers.Contract( contractAddress, contractABI, signer );
+        const contract = new ethers.Contract(
+          contractAddress,
+          contractABI,
+          signer
+        );
         setState({ provider, signer, contract });
       } catch (err) {
         console.log(err);
       }
-    }
+    };
     connectWallet();
   }, []);
 
   console.log(state);
-  return <div className="App">
-    <Box>
+  return (
+    <div className="App">
       <Buy state={state} />
-    </Box>
-  </div>;
+    </div>
+  );
 }
 
 export default App;
