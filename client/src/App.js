@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import { Box } from "@chakra-ui/react";
 import Buy from "./components/Buy";
+import Memos from "./components/Memos";
 
 function App() {
   const [state, setState] = useState({
@@ -13,7 +14,7 @@ function App() {
 
   useEffect(() => {
     const connectWallet = async () => {
-      const contractAddress = "0x8e72bbc23465c700c9a8c837fe5e24fa46def5ba";
+      const contractAddress = "0xfAb3A42145e00E3561EaD77FF687A06089AD522C";
       const contractABI = abi.abi;
 
       try {
@@ -44,6 +45,7 @@ function App() {
   return (
     <div className="App">
       <Buy state={state} />
+      <Memos state={state} />
     </div>
   );
 }
