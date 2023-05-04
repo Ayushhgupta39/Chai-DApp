@@ -1,4 +1,11 @@
-import { Box, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  FormControl,
+  FormLabel,
+  Input,
+} from "@chakra-ui/react";
 import React from "react";
 import { ethers } from "ethers";
 
@@ -36,7 +43,7 @@ export default function Buy({ state }) {
               id="name"
               placeholder="Enter your name..."
               variant={"flushed"}
-              _placeholder={{ opacity: 1, color: "#d3d3d3"}}
+              _placeholder={{ opacity: 1, color: "#d3d3d3" }}
             />
           </FormControl>
           <FormControl my={"1"}>
@@ -47,18 +54,18 @@ export default function Buy({ state }) {
               id="message"
               placeholder="Enter your message..."
               variant={"flushed"}
-              _placeholder={{ opacity: 1, color: "#d3d3d3"}}
+              _placeholder={{ opacity: 1, color: "#d3d3d3" }}
             />
           </FormControl>
           <Box my={"2"}>
-            <Button
-              width={"80"}
-              type="submit"
-              borderRadius={"full"}
-              colorScheme="twitter"
-            >
-              Pay
-            </Button>
+            <ButtonGroup display={"flex"} justifyContent={"space-between"}>
+              <Button borderRadius={"full"} colorScheme="whatsapp">
+                Transactions
+              </Button>
+              <Button width={"24"} type="submit" borderRadius={"full"} colorScheme="twitter">
+                Pay
+              </Button>
+            </ButtonGroup>
           </Box>
         </form>
       </Box>
