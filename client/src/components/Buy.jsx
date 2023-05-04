@@ -17,28 +17,51 @@ export default function Buy({ state }) {
   };
 
   return (
-    <Box display={"flex"} alignContent={"center"} justifyContent={"center"}>
-      <form onSubmit={buyChai}>
-        <FormControl width={"80"}>
-          <FormLabel>Name</FormLabel>
-          <Input
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Enter your name"
-          />
-        </FormControl>
-        <FormControl>
-          <FormLabel>Message</FormLabel>
-          <Input
-            type="text"
-            name="message"
-            id="message"
-            placeholder="Enter your message..."
-          />
-        </FormControl>
-        <Button type="submit">Pay</Button>
-      </form>
+    <Box
+      height={"100vh"}
+      className="buy_chai"
+      display={"flex"}
+      alignItems={"center"}
+      justifyContent={"center"}
+      bgImage={"/chai_bg.png"}
+      bgSize={"cover"}
+    >
+      <Box textColor={"#F6F1F1"}>
+        <form onSubmit={buyChai}>
+          <FormControl my={"1"} width={"80"}>
+            <FormLabel fontWeight={"600"}>Name</FormLabel>
+            <Input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Enter your name..."
+              variant={"flushed"}
+              _placeholder={{ opacity: 1, color: "#d3d3d3"}}
+            />
+          </FormControl>
+          <FormControl my={"1"}>
+            <FormLabel fontWeight={"600"}>Message</FormLabel>
+            <Input
+              type="text"
+              name="message"
+              id="message"
+              placeholder="Enter your message..."
+              variant={"flushed"}
+              _placeholder={{ opacity: 1, color: "#d3d3d3"}}
+            />
+          </FormControl>
+          <Box my={"2"}>
+            <Button
+              width={"80"}
+              type="submit"
+              borderRadius={"full"}
+              colorScheme="twitter"
+            >
+              Pay
+            </Button>
+          </Box>
+        </form>
+      </Box>
     </Box>
   );
 }

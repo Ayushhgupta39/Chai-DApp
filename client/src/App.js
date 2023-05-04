@@ -1,9 +1,9 @@
 import abi from "./contract/Chai.json";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
-import { Box } from "@chakra-ui/react";
 import Buy from "./components/Buy";
 import Memos from "./components/Memos";
+import "./index.css";
 
 function App() {
   const [state, setState] = useState({

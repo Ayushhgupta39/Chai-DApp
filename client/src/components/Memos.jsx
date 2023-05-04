@@ -5,14 +5,13 @@ import {
   Thead,
   Tr,
   Th,
-  Heading,
   Tbody,
   Td,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 
 export default function Memos({ state }) {
-  const [memos, setMemos] = useState([])
+  const [memos, setMemos] = useState([]);
   const { contract = {} } = state;
   console.log(state);
   console.log("Contract is: ", contract);
@@ -22,16 +21,16 @@ export default function Memos({ state }) {
     const memosMessage = async () => {
       const memos = await contract.getMemos();
       setMemos(memos);
-      console.log("Memos are: ",memos);
+      console.log("Memos are: ", memos);
     };
-    memosMessage(); 
+    contract && memosMessage();
   }, [contract]);
 
   return (
-    <div>
+    <div className="memos">
       <Box>
         <TableContainer>
-          <Table variant={"striped"}>
+          <Table variant={"simple"}>
             <Thead>
               <Tr>
                 <Th>Name</Th>
