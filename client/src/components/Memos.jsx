@@ -12,24 +12,26 @@ import {
 import React, { useEffect, useState } from "react";
 
 export default function Memos({ state }) {
-  const [memos, setMemos] = useState([]);
-  const { contract } = state;
+  const [memos, setMemos] = useState([])
+  const { contract = {} } = state;
+  console.log(state);
+  console.log("Contract is: ", contract);
 
   useEffect(() => {
+    console.log(`Hello world`);
     const memosMessage = async () => {
       const memos = await contract.getMemos();
-      console.log(memos);
       setMemos(memos);
+      console.log("Memos are: ",memos);
     };
-    memosMessage();
+    memosMessage(); 
   }, [contract]);
-  // console.log(memos);
 
   return (
     <div>
       <Box>
         <TableContainer>
-          <Table variant={"simple"}>
+          <Table variant={"striped"}>
             <Thead>
               <Tr>
                 <Th>Name</Th>
@@ -39,18 +41,16 @@ export default function Memos({ state }) {
               </Tr>
             </Thead>
             <Tbody>
-            {
-              memos.map((memos) => {
+              {memos.map((memos) => {
                 return (
                   <Tr key={memos.timeStamp}>
-                    <Td>{ memos.name }</Td>
-                    <Td>{ memos.message }</Td>
-                    <Td>{ memos.timeStamp }</Td>
-                    <Td>{ memos.from }</Td>
+                    <Td>{memos.name}</Td>
+                    <Td>{memos.message}</Td>
+                    <Td>{String(memos.timeStamp)}</Td>
+                    <Td>{memos.from}</Td>
                   </Tr>
-                )
-              })
-            }
+                );
+              })}
             </Tbody>
           </Table>
         </TableContainer>
