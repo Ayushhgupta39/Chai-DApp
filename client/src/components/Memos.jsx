@@ -17,11 +17,9 @@ export default function Memos({ state }) {
   console.log("Contract is: ", contract);
 
   useEffect(() => {
-    console.log(`Hello world`);
     const memosMessage = async () => {
       const memos = await contract.getMemos();
       setMemos(memos);
-      console.log("Memos are: ", memos);
     };
     contract && memosMessage();
   }, [contract]);
@@ -45,7 +43,7 @@ export default function Memos({ state }) {
                   <Tr key={memos.timeStamp}>
                     <Td>{memos.name}</Td>
                     <Td>{memos.message}</Td>
-                    <Td>{String(memos.timeStamp)}</Td>
+                    <Td>{new Date(memos.timeStamp * 1000).toLocaleString()}</Td>
                     <Td>{memos.from}</Td>
                   </Tr>
                 );

@@ -12,6 +12,8 @@ function App() {
     contract: null,
   });
 
+  const [account, setAccount] = useState("No Account connected");
+
   useEffect(() => {
     const connectWallet = async () => {
       const contractAddress = "0x8E72BBc23465C700c9a8c837fE5e24fA46dEF5BA";
@@ -24,16 +26,27 @@ function App() {
           const accounts = await ethereum.request({
             method: "eth_requestAccounts",
           });
-        }
 
-        const provider = new ethers.providers.Web3Provider(ethereum);
-        const signer = provider.getSigner();
-        const contract = new ethers.Contract(
-          contractAddress,
-          contractABI,
-          signer
-        );
-        setState({ provider, signer, contract });
+          window.ethereum.on("chainChnaged", () => {
+            window.location.reload();
+          })
+
+          window.ethereum.on("accountsChanged", () => {
+            window.location.reload();
+          })
+
+          const provider = new ethers.providers.Web3Provider(ethereum);
+          const signer = provider.getSigner();
+          const contract = new ethers.Contract(
+            contractAddress,
+            contractABI,
+            signer
+          );
+          setState({ provider, signer, contract });
+          setAccount(accounts);
+        } else {
+          alert("Please install Metamask.")
+        }
       } catch (err) {
         console.log(err);
       }
@@ -44,7 +57,7 @@ function App() {
   console.log(state);
   return (
     <div className="App">
-      <Buy state={state} />
+      <Buy state={state} account={account} />
       <Memos state={state} />
     </div>
   );
