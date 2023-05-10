@@ -2,7 +2,6 @@ import abi from "./contract/Chai.json";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import Buy from "./components/Buy";
-import Memos from "./components/Memos";
 import "./index.css";
 
 function App() {
@@ -58,7 +57,6 @@ function App() {
   return (
     <div className="App">
       <Buy state={state} account={account} />
-      <Memos state={state} />
     </div>
   );
 }
