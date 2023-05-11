@@ -26,7 +26,7 @@ function App() {
             method: "eth_requestAccounts",
           });
 
-          window.ethereum.on("chainChnaged", () => {
+          window.ethereum.on("chainChanged", () => {
             window.location.reload();
           })
 
