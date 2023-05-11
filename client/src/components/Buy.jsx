@@ -51,6 +51,7 @@ export default function Buy({ state, account }) {
     const transaction = await contract.buyChai(name, message, value);
     await transaction.wait();
     console.log("Transaction is completed");
+    location.reload();
   };
 
   return (
