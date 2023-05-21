@@ -51,51 +51,70 @@ export default function Buy({ state, account }) {
     const transaction = await contract.buyChai(name, message, value);
     await transaction.wait();
     console.log("Transaction is completed");
-    location.reload();
+    window.location.reload();
+
   };
 
   return (
-    <Box
-      height={"100vh"}
+    <><div
+      style={{
+        height: "92vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundImage: "url(/Bchain2.jpg)",
+        backgroundSize: "cover",
+      }}
       className="buy_chai"
-      display={"flex"}
-      flexDirection={"column"}
-      alignItems={"center"}
-      justifyContent={"space-around"}
-      bgImage={"/chai_bg.png"}
-      bgSize={"cover"}
     >
-      <Box>
-        <Heading mt={"10"} textColor={"#F6F1F1"}>Account:</Heading>
-        <small style={{ color: "#F6F1F1" }}>{account}</small>
-      </Box>
-      <Box textColor={"#F6F1F1"}>
-        <form onSubmit={buyChai}>
-          <FormControl my={"1"} width={"80"}>
-            <FormLabel fontWeight={"600"}>Name</FormLabel>
-            <Input
-              type="text"
-              name="name"
-              id="name"
-              placeholder="Enter your name..."
-              variant={"flushed"}
-              _placeholder={{ opacity: 1, color: "#d3d3d3" }}
-            />
-          </FormControl>
-          <FormControl my={"1"}>
-            <FormLabel fontWeight={"600"}>Message</FormLabel>
-            <Input
-              type="text"
-              name="message"
-              id="message"
-              placeholder="Enter your message..."
-              variant={"flushed"}
-              _placeholder={{ opacity: 1, color: "#d3d3d3" }}
-            />
-          </FormControl>
-          <Box my={"2"}>
-            <ButtonGroup display={"flex"} justifyContent={"space-between"}>
-              <Button
+      {/* <div style={{ display: "flex", justifyContent: "space-between" }}> */}
+      <h1 style={{ color: "white" }}>Store your Documents securely</h1>
+      <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Click here, for more Info!
+      </button>
+      <div class="collapse my-3" id="collapseExample">
+        <div class="card card-body">
+          "This will allow to store your personal documents securely as well as in the decentralized manner, all you have to
+          is to pay a small amount of ethers i.e. 0.001 ethers to the owner."
+        </div>
+      </div>
+
+      <div className='container my-3' >
+        {/* className={`well ${isHashValid() === hash ? '' : 'well-error'}`} */}
+        <div style={{display: "flex", justifyContent: "center", alignItems: "center"}} >
+        <div className="well" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', width: "70vh", alignItems: "center" }}>
+          <Box>
+            <Heading mt={"10"} textColor={"#FFFFFF"}>Account:</Heading>
+            <small style={{ color: "#FFFFFF" }}>{account}</small>
+          </Box>
+          <Box textColor={"#FFFFFF"}>
+            <form onSubmit={buyChai}>
+              <FormControl my={"1"} width={"80"}>
+                <FormLabel fontWeight={"600"}>Name</FormLabel>
+                <Input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Enter your name..."
+                  variant={"flushed"}
+                  _placeholder={{ opacity: 1, color: "#FFFFFF" }}
+                />
+              </FormControl>
+              <FormControl my={"1"}>
+                <FormLabel fontWeight={"600"}>Document</FormLabel>
+                <Input
+                  type="file"
+                  name="message"
+                  id="message"
+                  placeholder="Add File..."
+                  variant={"flushed"}
+                  _placeholder={{ opacity: 1, color: "#FFFFFF" }}
+                />
+              </FormControl>
+              <Box my={"1"}>
+                <ButtonGroup display={"flex"} justifyContent={"center"} marginTop="5vh">
+                  {/* <Button
                 onClick={onOpen}
                 borderRadius={"full"}
                 colorScheme="whatsapp"
@@ -154,21 +173,24 @@ export default function Buy({ state, account }) {
                     </Button>
                   </ModalFooter>
                 </ModalContent>
-              </Modal>
-              <Button
-                isDisabled={!state.contract}
-                width={"24"}
-                type="submit"
-                borderRadius={"full"}
-                colorScheme="twitter"
-              >
-                Pay
-              </Button>
-            </ButtonGroup>
+              </Modal> */}
+                  <Button
+                    isDisabled={!state.contract}
+                    width={"24"}
+                    type="submit"
+                    borderRadius={"full"}
+                    colorScheme="twitter"
+                  >
+                    Pay
+                  </Button>
+                </ButtonGroup>
+              </Box>
+            </form>
           </Box>
-        </form>
-      </Box>
-      <Box></Box>
-    </Box>
+        </div>
+        </div>
+      </div>
+    </div>
+    </>
   );
 }
